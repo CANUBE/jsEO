@@ -62,3 +62,4 @@ var jsEO = new Class({
     }
 });
 
+exports.jsEO = jsEO;
