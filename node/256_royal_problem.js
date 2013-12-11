@@ -36,7 +36,7 @@ function main() {
     jsEOUtils.setProblemId("http://jsEO.vrivas.es/20131030120000256ROYALFUNCTION");
     
     // Initializing algorithm
-    var myBSGA = new jsEOBSGA(new jsEOOpSendIndividuals(), new jsEOOpGetIndividuals());
+    var myBSGA = new jsEOBSGA(new jsEOOpSendRestIndividual(), new jsEOOpGetIndividual());
 
     // Stablishing parameters
     myBSGA.popSize = jsEOUtils.getInputParam("popSize", 500);
