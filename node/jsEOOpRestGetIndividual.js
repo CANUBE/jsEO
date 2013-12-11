@@ -67,8 +67,18 @@ var jsEOOpRestGetIndividual = new Class({
                     // Processing the individual
                     if( !responseText ) {return null;}
                     var tmpInd = new jsEOIndividual();
-		    tmpInd.setChromosome(responseJSON.chromstring);
-                    tmpInd.setFitness(responseJSON.fitness);
+		    if( responseJSON.fitness!=-1 ) {
+			    tmpInd.setChromosome(responseJSON.chromstring);
+        	            tmpInd.setFitness(responseJSON.fitness);
+			} else {
+  				var tmpC="0";
+                        	for( var z=0; z<8; ++z ) {
+					tmpC+=tmpC;
+				}
+				tmpInd.setChromosome( tmpC );
+				tmpInd.setFitness(0);
+			}
+		    }
                     jsEOUtils.debugln("jsEOOpRestGetIndividual: Adding the individual");
                     toRet.add(tmpInd);
                 },
