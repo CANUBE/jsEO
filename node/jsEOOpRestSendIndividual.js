@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var jsEOOpSendIndividuals = new Class({
+var jsEOOpRestSendIndividuals = new Class({
     Extends: jsEOOperator,
     numIndividuals: 1,
     initialize: function(_numIndividuals) {
@@ -101,17 +101,17 @@ var jsEOOpSendIndividuals = new Class({
 
         data2bSend += tmpPop;
         try {
-            new Request({
-                url: jsEOUtils.getSendURL(),
-                method: 'GET',
+            new Request.JSON({
+                url: jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosomeId()+"/fitness/"+_auxPop.getAt(0).getFitness(),
+                method: 'PUT',
                 async: true,
                 data: data2bSend,
                 timeout: 1000,
-                onSuccess: function(responseText) {
-                    jsEOUtils.debugln('jsEOOpSendInddividual: Conection response: ' + responseText);
+                onSuccess: function(responseJSON, responseText) {
+                    jsEOUtils.debugln('jsEOOpRestSendInddividual: Conection response: ' + responseText);
                 },
                 onTimeout: function() {
-                    jsEOUtils.debugln("jsEOOpSendInddividual: Timeout while conecting to " +
+                    jsEOUtils.debugln("jsEOOpRestSendInddividual: Timeout while conecting to " +
                             jsEOUtils.getSendURL());
                     this.cancel();
                 },

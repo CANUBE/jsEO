@@ -67,7 +67,7 @@ var jsEOOpRestGetIndividual = new Class({
                     // Processing the individual
                     if( !responseText ) {return null;}
                     var tmpInd = new jsEOIndividual();
-		    tmpInd.setChromosome(responseJSON.crhomstring);
+		    tmpInd.setChromosome(responseJSON.chromstring);
                     tmpInd.setFitness(responseJSON.fitness);
                     jsEOUtils.debugln("jsEOOpRestGetIndividual: Adding the individual");
                     toRet.add(tmpInd);

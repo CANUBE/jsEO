@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var jsEOOpSendIndividuals = new Class({
+var jsEOOpRestSendIndividual = new Class({
     Extends: jsEOOperator,
     numIndividuals: 1,
     initialize: function(_numIndividuals) {
@@ -28,7 +28,7 @@ var jsEOOpSendIndividuals = new Class({
         // By the moment, we only store 1 individual
         _numIndividuals = 1;
         this.numIndividuals = _numIndividuals
-        jsEOUtils.debugln("Initializing a jsEOOpSendIndividuals " +
+        jsEOUtils.debugln("Initializing a jsEORestSendIndividual " +
                 " with applicationRate " + this.applicationRate +
                 ", numIndividuals " + this.numIndividuals
                 );
@@ -101,9 +101,9 @@ var jsEOOpSendIndividuals = new Class({
 
         data2bSend += tmpPop;
         try {
-            new Request({
+            new Request.JSON({
                 url: jsEOUtils.getSendURL(),
-                method: 'GET',
+                method: 'PUT',
                 async: true,
                 data: data2bSend,
                 timeout: 1000,
