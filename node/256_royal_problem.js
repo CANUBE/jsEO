@@ -53,7 +53,7 @@ function main() {
     // Creating the problem in sever
 	try {
             new Request.JSON({
-                url: "/problem/rr",
+                url: "/new_problem/rr",
                 method: 'POST',
                 async: false,
                 data: "",

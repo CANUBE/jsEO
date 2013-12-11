@@ -22,6 +22,11 @@ app.put('/problem/:id', function(req,res) {
 	    res.send( { created: req.params.id } );
 });
 
+app.post('/new_problem/:id', function(req,res) {
+	    problems[req.params.id] = new Array;
+	    res.send( { created: req.params.id } );
+});
+
 app.put('/problem/:id/chromosome/:chrom/fitness/:fitness', function(req,res) {
 	    var new_chrom = { chromstring: req.params.chrom,
 			      fitness: req.params.fitness };
@@ -35,7 +40,7 @@ app.post('/problem/:id', function(req,res) {
 		 res.status(404).send('Not found');
 	     } else {
 		 var new_chrom = { chromstring: req.body.chromstring,
-				   fitness: req.body.fitness };
+				   fitness: parseInt(req.body.fitness) };
 		 
 		 problems[req.params.id].push( new_chrom ) ;
 		 console.log("POST "+JSON.stringify(new_chrom));
