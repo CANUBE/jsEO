@@ -4,6 +4,8 @@ var fs=require('fs');
 var express = require('express');
 var app = express();
 var problems = new Object;
+app.use(express.urlencoded());
+app.use(express.json());    
 
 app.get('/', function(req, res){
   res.sendfile('256_royal_road.html');
@@ -25,6 +27,15 @@ app.put('/problem/:id/chromosome/:chrom/fitness/:fitness', function(req,res) {
 			      fitness: req.params.fitness };
 	    problems[req.params.id].push( new_chrom ) ;
 	    console.log("PUT "+JSON.stringify(new_chrom));
+	    res.send( { created: new_chrom } );
+});
+
+app.post('/problem/:id', function(req,res) {
+	     console.log(req.body);
+	    var new_chrom = { chromstring: req.body.chromstring,
+			      fitness: req.body.fitness };
+	    problems[req.params.id].push( new_chrom ) ;
+	    console.log("POST "+JSON.stringify(new_chrom));
 	    res.send( { created: new_chrom } );
 });
 
