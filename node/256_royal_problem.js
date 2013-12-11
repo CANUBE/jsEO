@@ -45,7 +45,7 @@ function main() {
     myBSGA.mutRate = jsEOUtils.getInputParam("mutRate", 10);
     myBSGA.mutPower = jsEOUtils.getInputParam("mutPower", 0.5);
     myBSGA.getIndividualsRate = jsEOUtils.getInputParam("getIndividualsRate", 1);
-    myBSGA.numGenerations = jsEOUtils.getInputParam("numGenerations", 50);
+    myBSGA.numGenerations = jsEOUtils.getInputParam("numGenerations", 50 );
     myBSGA.replaceRate = jsEOUtils.getInputParam("replaceRate", 0.5);
     myBSGA.showing = jsEOUtils.getInputParam("showing", 3);
     myBSGA.indSize = jsEOUtils.getInputParam("indSize", 128);
