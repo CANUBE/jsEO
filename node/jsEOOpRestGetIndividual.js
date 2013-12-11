@@ -71,11 +71,11 @@ var jsEOOpRestGetIndividual = new Class({
 			    tmpInd.setChromosome(responseJSON.chromstring);
         	            tmpInd.setFitness(responseJSON.fitness);
 			} else {
-  				var tmpC="0";
-                        	for( var z=0; z<8; ++z ) {
+  				var tmpC="01";
+                        	for( var z=0; z<6; ++z ) {
 					tmpC+=tmpC;
 				}
-				tmpInd.setChromosome( tmpC );
+				tmpInd.setChromosome( tmpC.substring(0,256) );
 				tmpInd.setFitness(0);
 			}
                     jsEOUtils.debugln("jsEOOpRestGetIndividual: Adding the individual");
