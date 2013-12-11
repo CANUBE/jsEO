@@ -105,7 +105,7 @@ var jsEOOpRestSendIndividual = new Class({
                 url: jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosomeId()+"/fitness/"+_auxPop.getAt(0).getFitness(),
                 method: 'PUT',
                 async: true,
-                data: data2"",
+                data: "",
                 timeout: 1000,
                 onSuccess: function(responseJSON, responseText) {
                     jsEOUtils.println('jsEOOpRestSendInddividual: Conection response: ' + responseText);
