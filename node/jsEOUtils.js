@@ -29,8 +29,8 @@ var jsEOUtils = {
     idOutput: "jsEOConsole",
     idGraphics: "jsEOGraphics",
     problemID: null,
-    getURL: "./",
-    sendURL: "./",
+    getURL: "",
+    sendURL: "",
     setOutput: function(_id) {
         if (typeof _id != 'undefined') {
             this.idOutput = _id;
