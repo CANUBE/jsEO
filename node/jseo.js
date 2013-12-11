@@ -11,9 +11,7 @@ app.get('/', function(req, res){
 
 app.get('/js/:file', function(req, res){
 	    var file_name = req.params.file.split(/\./);
-	    console.log(file_name);
 	    var path = file_name[file_name.length-2];
-	    console.log(path);
 	    res.sendfile(path+'.js');
 });
 
