@@ -78,7 +78,6 @@ var jsEOOpRestGetIndividual = new Class({
 				tmpInd.setChromosome( tmpC );
 				tmpInd.setFitness(0);
 			}
-		    }
                     jsEOUtils.debugln("jsEOOpRestGetIndividual: Adding the individual");
                     toRet.add(tmpInd);
                 },
