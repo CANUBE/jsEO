@@ -33,8 +33,9 @@ app.get('/chromosomes_problem/:id', function(req,res) {
 });
 
 app.get('/best_of_problem/:id', function(req,res) {
-
-	    res.send( best_of( problems[req.params.id] ) );
+	    var best_of_problem =  best_of( problems[req.params.id] ) ;
+	    console.log(best_of_problem);
+	    res.send(best_of_problem);
 });
 
 app.listen(3000);
