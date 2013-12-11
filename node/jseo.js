@@ -31,7 +31,7 @@ app.put('/problem/:id/chromosome/:chrom/fitness/:fitness', function(req,res) {
 });
 
 app.post('/problem/:id', function(req,res) {
-	     if ( ! defined problems[req.params.id] ) {
+	     if ( !  problems[req.params.id] ) {
 		 res.status(404).send('Not found');
 	     } else {
 		 var new_chrom = { chromstring: req.body.chromstring,
