@@ -24,7 +24,7 @@ app.put('/problem/:id/chromosome/:chrom/fitness/:fitness', function(req,res) {
 	    var new_chrom = { chromstring: req.params.chrom,
 			      fitness: req.params.fitness };
 	    problems[req.params.id].push( new_chrom ) ;
-	    console.log(new_chrom);
+	    console.log("PUT "+new_chrom);
 	    res.send( { created: new_chrom } );
 });
 
@@ -34,7 +34,7 @@ app.get('/chromosomes_problem/:id', function(req,res) {
 
 app.get('/best_of_problem/:id', function(req,res) {
 	    var best_of_problem =  best_of( problems[req.params.id] ) ;
-	    console.log(best_of_problem);
+	    console.log("GET best_of_problem: "+best_of_problem);
 	    res.send(best_of_problem);
 });
 
