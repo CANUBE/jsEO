@@ -100,7 +100,7 @@ var jsEOOpRestSendIndividual = new Class({
         }
 
         data2bSend += tmpPop;*/
-	var sendUrl=jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosomeId()+"/fitness/"+_auxPop.getAt(0).getFitness();
+	var sendUrl=jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosome()+"/fitness/"+_auxPop.getAt(0).getFitness();
         jsEOUtils.println("Connecting with PUT to URL: "+sendUrl);
         try {
             new Request.JSON({
