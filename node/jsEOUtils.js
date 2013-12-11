@@ -29,8 +29,8 @@ var jsEOUtils = {
     idOutput: "jsEOConsole",
     idGraphics: "jsEOGraphics",
     problemID: null,
-    getURL: "http://jseo.vrivas.es/php/sending.php",
-    sendURL: "http://jseo.vrivas.es/php/receiving.php",
+    getURL: "http://192.168.1.33:3000",
+    sendURL: "http://192.168.1.33:3000",
     setOutput: function(_id) {
         if (typeof _id != 'undefined') {
             this.idOutput = _id;
