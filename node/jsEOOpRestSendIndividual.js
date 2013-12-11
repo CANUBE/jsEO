@@ -103,7 +103,7 @@ var jsEOOpRestSendIndividual = new Class({
 	data2bSend= { "chromstring":_auxPop.getAt(0).getChromosome(),
 				    "fitness": parseInt(_auxPop.getAt(0).getFitness())};
 	var sendUrl=jsEOUtils.getSendURL()+"/problem/rr";
-        jsEOUtils.println("Connecting with PUT to URL: "+sendUrl + "<br>"+"Data is "+data2bSend);
+        jsEOUtils.debugln("Connecting with PUT to URL: "+sendUrl + "<br>"+"Data is "+data2bSend);
         try {
             new Request.JSON({
                 url: sendUrl,
@@ -112,22 +112,22 @@ var jsEOOpRestSendIndividual = new Class({
                 data: data2bSend,
                 timeout: 1000,
                 onSuccess: function(responseJSON, responseText) {
-                    jsEOUtils.println('jsEOOpRestSendInddividual: Connection response: ' + responseText);
+                    jsEOUtils.debugln('jsEOOpRestSendInddividual: Connection response: ' + responseText);
                 },
                 onTimeout: function() {
-                    jsEOUtils.println("jsEOOpRestSendIndividual: Timeout while conecting to " +
+                    jsEOUtils.debugln("jsEOOpRestSendIndividual: Timeout while conecting to " +
                             jsEOUtils.getSendURL());
                     this.cancel();
                 },
                 onFailure: function() {
-                    jsEOUtils.println("jsEOOpSendIndividual: Failure while conecting to " +
+                    jsEOUtils.debugln("jsEOOpSendIndividual: Failure while conecting to " +
                             jsEOUtils.getSendURL());
                     this.cancel();
                 }
 
             }).send();
         } catch (err) {
-            jsEOUtils.println("jsEOOpSendIndividual: Error captured!");
+            jsEOUtils.debugln("jsEOOpSendIndividual: Error captured!");
             return null;
         }
 
