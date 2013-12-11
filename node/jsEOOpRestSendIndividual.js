@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var jsEOOpRestSendIndividuals = new Class({
+var jsEOOpRestSendIndividual = new Class({
     Extends: jsEOOperator,
     numIndividuals: 1,
     initialize: function(_numIndividuals) {
