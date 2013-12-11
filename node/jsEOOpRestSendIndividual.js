@@ -100,18 +100,20 @@ var jsEOOpRestSendIndividual = new Class({
         }
 
         data2bSend += tmpPop;*/
+	var sendUrl=jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosomeId()+"/fitness/"+_auxPop.getAt(0).getFitness();
+        jsEOUtils.println("Connecting with PUT to URL: " url;
         try {
             new Request.JSON({
-                url: jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosomeId()+"/fitness/"+_auxPop.getAt(0).getFitness(),
+                url: sendUrl,
                 method: 'PUT',
                 async: true,
                 data: "",
                 timeout: 1000,
                 onSuccess: function(responseJSON, responseText) {
-                    jsEOUtils.println('jsEOOpRestSendInddividual: Conection response: ' + responseText);
+                    jsEOUtils.println('jsEOOpRestSendInddividual: Connection response: ' + responseText);
                 },
                 onTimeout: function() {
-                    jsEOUtils.println("jsEOOpRestSendInddividual: Timeout while conecting to " +
+                    jsEOUtils.println("jsEOOpRestSendIndividual: Timeout while conecting to " +
                             jsEOUtils.getSendURL());
                     this.cancel();
                 },
