@@ -50,6 +50,33 @@ function main() {
     myBSGA.showing = jsEOUtils.getInputParam("showing", 3);
     myBSGA.indSize = jsEOUtils.getInputParam("indSize", 128);
 
+    // Creating the problem in sever
+	try {
+            new Request.JSON({
+                url: "/problem/rr",
+                method: 'POST',
+                async: false,
+                data: "",
+                timeout: 1000,
+                onSuccess: function(responseJSON, responseText) {
+                    jsEOUtils.println('Creating problem in server: Connection response: ' + responseText);
+                },
+                onTimeout: function() {
+                    jsEOUtils.println("Creating problem in server: Timeout while conecting to " +
+                            jsEOUtils.getSendURL());
+                    this.cancel();
+                },
+                onFailure: function() {
+                    jsEOUtils.println("Creating problem in server: Failure while conecting to " +
+                            jsEOUtils.getSendURL());
+                    this.cancel();
+                }
+
+            }).send();
+        } catch (err) {
+            jsEOUtils.println("Creating problem in server: Error captured!");
+            return null;
+        }
     // Running algorithm
     myBSGA.run(fitnessFunction);
 }
