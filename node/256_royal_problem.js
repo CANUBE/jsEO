@@ -22,7 +22,7 @@ function fitnessFunction(_chr) {
         return null;
     }
     var toRet = 0;
-    for (var i = 0; i < _chr.length - 3; ++i) {
+    for (var i = 0; i < _chr.length - 4; i+=4) {
         toRet += (_chr.substr(i, 4) == "1111") ? 1 : 0;
         toRet += (_chr.substr(i, 4) == "0000") ? 1 : 0;
     }
