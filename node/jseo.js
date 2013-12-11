@@ -26,6 +26,7 @@ app.put('/problem/:id/chromosome/:chrom/fitness/:fitness', function(req,res) {
 	    var new_chrom = { chromstring: req.params.chrom,
 			      fitness: req.params.fitness };
 	    problems[req.params.id].push( new_chrom ) ;
+	    console.log(new_chrom);
 	    res.send( { created: new_chrom } );
 });
 
