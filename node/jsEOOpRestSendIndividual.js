@@ -79,7 +79,7 @@ var jsEOOpRestSendIndividual = new Class({
          }).send();
          */
         var data2bSend = "data=" + jsEOUtils.getProblemId() + ",";
-        var tmpPop = "";
+        /*var tmpPop = "";
         for (var i = 0; i < this.numIndividuals; ++i) {
             if (i > 0) {
                 tmpPop += ",";
@@ -99,31 +99,31 @@ var jsEOOpRestSendIndividual = new Class({
             tmpPop += "," + _auxPop.getAt(i).getFitness();
         }
 
-        data2bSend += tmpPop;
+        data2bSend += tmpPop;*/
         try {
             new Request.JSON({
                 url: jsEOUtils.getSendURL()+"/rr/chromosome/"+_auxPop.getAt(0).getChromosomeId()+"/fitness/"+_auxPop.getAt(0).getFitness(),
                 method: 'PUT',
                 async: true,
-                data: data2bSend,
+                data: data2"",
                 timeout: 1000,
                 onSuccess: function(responseJSON, responseText) {
-                    jsEOUtils.debugln('jsEOOpRestSendInddividual: Conection response: ' + responseText);
+                    jsEOUtils.println('jsEOOpRestSendInddividual: Conection response: ' + responseText);
                 },
                 onTimeout: function() {
-                    jsEOUtils.debugln("jsEOOpRestSendInddividual: Timeout while conecting to " +
+                    jsEOUtils.println("jsEOOpRestSendInddividual: Timeout while conecting to " +
                             jsEOUtils.getSendURL());
                     this.cancel();
                 },
                 onFailure: function() {
-                    jsEOUtils.debugln("jsEOOpSendIndividual: Failure while conecting to " +
+                    jsEOUtils.println("jsEOOpSendIndividual: Failure while conecting to " +
                             jsEOUtils.getSendURL());
                     this.cancel();
                 }
 
             }).send();
         } catch (err) {
-            jsEOUtils.debugln("jsEOOpSendIndividual: Error captured!");
+            jsEOUtils.println("jsEOOpSendIndividual: Error captured!");
             return null;
         }
 

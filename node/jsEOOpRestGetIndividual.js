@@ -62,7 +62,7 @@ var jsEOOpRestGetIndividual = new Class({
                 timeout: 1000,
                 data: "",
                 onSuccess: function(responseJSON, responseText) {
-                    jsEOUtils.debugln('jsEOOpRestGetIndividual: Getting individuals conection response: ' +
+                    jsEOUtils.debugln('jsEOOpRestGetIndividual: Getting individuals connection response: ' +
                             responseText);
                     // Processing the individual
                     if( !responseText ) {return null;}
