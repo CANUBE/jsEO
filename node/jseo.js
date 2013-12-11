@@ -31,13 +31,18 @@ app.put('/problem/:id/chromosome/:chrom/fitness/:fitness', function(req,res) {
 });
 
 app.post('/problem/:id', function(req,res) {
-	     console.log(req.body);
-	    var new_chrom = { chromstring: req.body.chromstring,
-			      fitness: req.body.fitness };
-	    problems[req.params.id].push( new_chrom ) ;
-	    console.log("POST "+JSON.stringify(new_chrom));
-	    res.send( { created: new_chrom } );
-});
+	     if ( ! defined problems[req.params.id] ) {
+		 res.status(404).send('Not found');
+	     } else {
+		 var new_chrom = { chromstring: req.body.chromstring,
+				   fitness: req.body.fitness };
+		 
+		 problems[req.params.id].push( new_chrom ) ;
+		 console.log("POST "+JSON.stringify(new_chrom));
+		 res.send( { created: new_chrom } );
+		 	 
+	     }
+	 });
 
 app.get('/chromosomes_problem/:id', function(req,res) {
 	    res.send( problems[req.params.id] );

@@ -100,7 +100,8 @@ var jsEOOpRestSendIndividual = new Class({
         }
 
         data2bSend += tmpPop;*/
-	data2bSend="{'chromstring':'"+_auxPop.getAt(0).getChromosome()+"','fitness':"+_auxPop.getAt(0).getFitness()+"}";
+	data2bSend= { "chromstring":_auxPop.getAt(0).getChromosome(),
+				    "fitness": parseInt(_auxPop.getAt(0).getFitness())};
 	var sendUrl=jsEOUtils.getSendURL()+"/problem/rr";
         jsEOUtils.println("Connecting with PUT to URL: "+sendUrl + "<br>"+"Data is "+data2bSend);
         try {
