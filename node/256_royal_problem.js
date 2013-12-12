@@ -29,32 +29,13 @@ function fitnessFunction(_chr) {
     return toRet;
 }
 
-
-function main() {
-    var verbose = jsEOUtils.getInputParam("verbose", false);
-    jsEOUtils.setVerbose(verbose == "true" || verbose == true);
-    jsEOUtils.setProblemId("http://jsEO.vrivas.es/20131030120000256ROYALFUNCTION");
-    
-    // Initializing algorithm
-    var myBSGA = new jsEOBSGA(new jsEOOpRestSendIndividual(), new jsEOOpRestGetIndividual());
-
-    // Stablishing parameters
-    myBSGA.popSize = jsEOUtils.getInputParam("popSize", 500);
-    myBSGA.tournamentSize = jsEOUtils.getInputParam("tournamentSize", 2);
-    myBSGA.xOverRate = jsEOUtils.getInputParam("xOverRate", 10);
-    myBSGA.mutRate = jsEOUtils.getInputParam("mutRate", 10);
-    myBSGA.mutPower = jsEOUtils.getInputParam("mutPower", 0.5);
-    myBSGA.getIndividualsRate = jsEOUtils.getInputParam("getIndividualsRate", 1);
-    myBSGA.numGenerations = jsEOUtils.getInputParam("numGenerations", 50 );
-    myBSGA.replaceRate = jsEOUtils.getInputParam("replaceRate", 0.5);
-    myBSGA.showing = jsEOUtils.getInputParam("showing", 3);
-    myBSGA.indSize = jsEOUtils.getInputParam("indSize", 128);
-
+function createProblem( _problemID ) {
     // Creating the problem in sever
 	try {
             new Request.JSON({
-                url: "/new_problem/rr",
-                method: 'POST',
+                url: "/problem/rr",
+                method: 'PUT',
+                emulation: false,
                 async: false,
                 data: "",
                 timeout: 1000,
@@ -77,6 +58,31 @@ function main() {
             jsEOUtils.println("Creating problem in server: Error captured!");
             return null;
         }
+}
+
+function main() {
+    var verbose = jsEOUtils.getInputParam("verbose", false);
+    jsEOUtils.setVerbose(verbose == "true" || verbose == true);
+    jsEOUtils.setProblemId("http://jsEO.vrivas.es/20131030120000256ROYALFUNCTION");
+    
+    // Initializing algorithm
+    var myBSGA = new jsEOBSGA(new jsEOOpRestSendIndividual(), new jsEOOpRestGetIndividual());
+
+    // Stablishing parameters
+    myBSGA.popSize = jsEOUtils.getInputParam("popSize", 500);
+    myBSGA.tournamentSize = jsEOUtils.getInputParam("tournamentSize", 2);
+    myBSGA.xOverRate = jsEOUtils.getInputParam("xOverRate", 10);
+    myBSGA.mutRate = jsEOUtils.getInputParam("mutRate", 10);
+    myBSGA.mutPower = jsEOUtils.getInputParam("mutPower", 0.5);
+    myBSGA.getIndividualsRate = jsEOUtils.getInputParam("getIndividualsRate", 1);
+    myBSGA.numGenerations = jsEOUtils.getInputParam("numGenerations", 50 );
+    myBSGA.replaceRate = jsEOUtils.getInputParam("replaceRate", 0.5);
+    myBSGA.showing = jsEOUtils.getInputParam("showing", 3);
+    myBSGA.indSize = jsEOUtils.getInputParam("indSize", 128);
+
+    // Ask server to create problem in server
+    createProblem( "rr");
+    
     // Running algorithm
     myBSGA.run(fitnessFunction);
 }

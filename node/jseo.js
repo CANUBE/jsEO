@@ -20,6 +20,8 @@ app.get('/js/:file', function(req, res){
 app.put('/problem/:id', function(req,res) {
 	    problems[req.params.id] = new Array;
 	    res.send( { created: req.params.id } );
+            console.log("PUT "+req.params.id);
+
 });
 
 app.post('/new_problem/:id', function(req,res) {
